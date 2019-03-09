@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Aplicativo de INTRANET do HNSA. Mobile friendly e disponível offline.">
+    <meta name="theme-color" content="#65AFFF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/alertify/alertify.min.css">
+    <link rel="stylesheet" href="assets/css/alertify/default.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="manifest" href="manifest.json">
+    <title>Intranet HNSA</title>
+</head>
+<header class="fadeIn1">
+    <h1><img src="media/logo-branco.png" alt="logo-hnsa" class="logo"></h1>  
+    <a id="btnAddToHomeScreen" >
+        <i class="download fas fa-file-download animated bounceIn"></i>
+    </a> 
+</header>
+<body>
+    <div class="container fadeIn2">
+        <main>         
+            <section class="news animated bounceIn">
+                <div class="overlay">              
+                <i class="fas fa-newspaper"></i>
+                <h2>News</h2>
+                <p>Seção destinada para notícias.</p>              
+                </div>  
+            </section>
+            <section class="avisos animated bounceIn">               
+                <div class="overlay">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Avisos</h2>
+                    <p>Seção destinada para avisos em geral.</p>
+                </div>                       
+            </section>          
+            <section class="forum animated bounceIn">
+                <div class="overlay">                
+                <i class="far fa-comments"></i>
+                <h2>Fórum</h2>
+                <p>Acesso ao fórum.</p> 
+                </div>                              
+            </section>
+            <section class="sistemas animated bounceIn">
+                <div class="overlay">
+                <i class="fas fa-tools"></i>
+                <h2>Sistemas</h2>
+                <p>Acesso aos sistemas (192.168.150.222).</p>    
+                </div>         
+            </section>        
+        </main>
+    </div>
+    <footer>
+    TIC - HOSPITAL NOSSA SENHORA APARECIDA
+    </footer>   
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                console.log('ServiceWorker registrado no seguinte escopo: ', registration.scope);
+                }, 
+                function(err) {
+                console.log('Falha no registro do ServiceWorker.', err);
+                });
+            });
+            var deferredPrompt;
+            window.addEventListener('beforeinstallprompt', function (e) {
+            console.log('beforeinstallprompt Event fired');
+            //e.preventDefault();
+            deferredPrompt = e;
+            return false;
+            });
+            btnAddToHomeScreen.addEventListener('click', function () {
+            if (deferredPrompt !== undefined) {              
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function (choiceResult) {
+                    console.log(choiceResult.outcome);
+                    if (choiceResult.outcome == 'dismissed') {
+                        console.log('User cancelled home screen install');
+                    } else {
+                        console.log('User added to home screen');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        });
+    }
+    </script>   
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    
+<script src="assets/js/alertify.min.js"></script>
+<script src="app/index.js"></script>
+<script src="app/notification.js"></script>
+</body>
+</html>

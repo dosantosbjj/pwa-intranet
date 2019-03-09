@@ -1,0 +1,7 @@
+Options +Indexes
+IndexOptions FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=*
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}

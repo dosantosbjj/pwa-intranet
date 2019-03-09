@@ -1,0 +1,53 @@
+{
+    "name":"Intranet HNSA",
+    "short_name":"IntraHNSA",
+    "start_url":"https://localhost/proj/",
+    "display":"standalone",
+    "lang":"pt-BR",
+    "orientation":"portrait-primary",
+    "background_color":"#65AFFF",
+    "theme_color":"#65AFFF",
+    "description":"Portal para fórum, news e documentos.",
+    "icons":[{
+            "src":"media/icons/logo36.png",
+            "type":"image/png",
+            "sizes":"36x36",
+            "purpose":"any"
+            },
+            {
+            "src":"media/icons/logo48.png",
+            "type":"image/png",
+            "sizes":"48x48",
+            "purpose":"any"
+            },
+            {
+            "src":"media/icons/logo72.png",
+            "type":"image/png",
+            "sizes":"72x72",
+            "purpose":"any"
+            },      
+            {  
+            "src":"media/icons/logo144.png",
+            "type":"image/png",
+            "sizes":"144x144"   
+            },
+            {
+            "src":"media/icons/logo192.png",
+            "type":"image/png",
+            "sizes":"192x192",
+            "purpose":"any"
+            },
+            {
+            "src":"media/icons/logo256.png",
+            "type":"image/png",
+            "sizes":"256x256",
+            "purpose":"any"
+            },
+            {
+            "src":"media/icons/logo512.png",
+            "type":"image/png",
+            "sizes":"512x512",
+            "purpose":"any"
+            }
+]}    
+    
